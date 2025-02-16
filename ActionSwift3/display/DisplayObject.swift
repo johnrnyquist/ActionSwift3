@@ -7,84 +7,89 @@
 //
 
 import SpriteKit
+
 /**
 The base class for all display objects. Contains basic properties such as `width`, `height`, `scaleX`, `scaleY`, `x` and `y`.
 */
 open class DisplayObject: EventDispatcher, StageSceneProtocol {
-    open weak var parent:DisplayObjectContainer?
-    open var name:String = ""
-    open weak var stage:Stage?
-    
+    open weak var parent: DisplayObjectContainer?
+    open var name: String = ""
+    open weak var stage: Stage?
     internal var node = SKNode()
-    
+
     override public init() {
         super.init()
-
+    }
+    /**
+     Indicates the visibility of the display object. Display objects with visible set to false are not rendered. 
+     */
+    var visible: Bool {
+        get { node.isHidden }
+        set(newValue) { node.isHidden = !newValue }
     }
     /**
      Indicates the alpha transparency value of the object specified. Valid values are 0 (fully transparent) to 1 (fully opaque). The default value is 1. Display objects with alpha set to 0 are active, even though they are invisible.
      */
-    open var alpha:CGFloat {
-        get {return node.alpha}
-        set(newValue) {node.alpha = newValue}
+    open var alpha: CGFloat {
+        get { node.alpha }
+        set(newValue) { node.alpha = newValue }
     }
     /**
     Indicates the height of the display object, in points.
      **/
-    open var height:CGFloat {
-        return node.frame.height
+    open var height: CGFloat {
+        node.frame.height
     }
     /**
      Indicates the width of the display object, in points.
      **/
-    open var width:CGFloat {
-        return node.frame.width
+    open var width: CGFloat {
+        node.frame.width
     }
     /**
      Indicates the rotation of the DisplayObject instance, in degrees, from its original orientation. Values from 0 to 180 represent clockwise rotation; values from 0 to -180 represent counterclockwise rotation. Values outside this range are added to or subtracted from 360 to obtain a value within the range. For example, the statement my_video.rotation = 450 is the same as my_video.rotation = 90.
      **/
-    open var rotation:CGFloat {
-        get {return -node.zRotation * 180 / CGFloat.pi}
-        set(newValue) {node.zRotation = -newValue * CGFloat.pi / 180}
+    open var rotation: CGFloat {
+        get { -node.zRotation * 180 / CGFloat.pi }
+        set(newValue) { node.zRotation = -newValue * CGFloat.pi / 180 }
     }
     /**
      Indicates the horizontal scale (percentage) of the object as applied from the registration point. The default registration point is (0,0). 1.0 equals 100% scale.
     **/
-    open var scaleX:CGFloat {
-        get {return node.xScale}
-        set(newValue) {node.xScale = newValue}
+    open var scaleX: CGFloat {
+        get { node.xScale }
+        set(newValue) { node.xScale = newValue }
     }
     /**
      Indicates the vertical scale (percentage) of the object as applied from the registration point. The default registration point is (0,0). 1.0 equals 100% scale.
      **/
-    open var scaleY:CGFloat {
-        get {return node.yScale}
-        set(newValue) {node.yScale = newValue}
+    open var scaleY: CGFloat {
+        get { node.yScale }
+        set(newValue) { node.yScale = newValue }
     }
     /**
      Indicates the x coordinate of the DisplayObject instance relative to the local coordinates of the parent DisplayObjectContainer.
      **/
-    open var x:CGFloat {
-        get {return node.position.x}
-        set (newValue) {node.position.x = newValue}
+    open var x: CGFloat {
+        get { node.position.x }
+        set(newValue) { node.position.x = newValue }
     }
     /**
      Indicates the y coordinate of the DisplayObject instance relative to the local coordinates of the parent DisplayObjectContainer.
      **/
-    open var y:CGFloat {
-        get {return -node.position.y}
-        set (newValue) {
+    open var y: CGFloat {
+        get { -node.position.y }
+        set(newValue) {
             node.position.y = -newValue
         }
     }
-    
-    internal var yRaw:CGFloat {
-        get {return node.position.y}
-        set (newValue) {
+    internal var yRaw: CGFloat {
+        get { node.position.y }
+        set(newValue) {
             node.position.y = newValue
         }
     }
-    internal func update(_ currentTime:CFTimeInterval) {
-        dispatchEvent(Event(EventType.EnterFrame.rawValue,false))
+    internal func update(_ currentTime: CFTimeInterval) {
+        dispatchEvent(Event(EventType.EnterFrame.rawValue, false))
     }
 }
