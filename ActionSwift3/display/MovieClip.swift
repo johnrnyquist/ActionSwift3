@@ -94,6 +94,7 @@ open class MovieClip: Sprite {
     
     //private helper funcs
     internal func playTextures(_ textures:[SKTexture]) {
+        guard textures.count > 0 else { return }
         if (loop) {
             spriteNode.run(
                 SKAction.repeatForever(
