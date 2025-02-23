@@ -60,7 +60,7 @@ open class Sprite: DisplayObjectContainer {
         self.removeEventListener(InteractiveEventType.TouchMove.rawValue, EventHandler(touchEventHandler, "touchEventHandler"))
         print("stop drag")
     }
-    override internal func update(_ currentTime:CFTimeInterval) {
+    override public func update(_ currentTime:CFTimeInterval) {
         super.update(currentTime)
     }
 }

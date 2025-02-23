@@ -23,7 +23,7 @@ open class DisplayObject: EventDispatcher, StageSceneProtocol {
     /**
      Indicates the visibility of the display object. Display objects with visible set to false are not rendered. 
      */
-    var visible: Bool {
+    open var visible: Bool {
         get { node.isHidden }
         set(newValue) { node.isHidden = !newValue }
     }
@@ -89,7 +89,7 @@ open class DisplayObject: EventDispatcher, StageSceneProtocol {
             node.position.y = newValue
         }
     }
-    internal func update(_ currentTime: CFTimeInterval) {
+    public func update(_ currentTime: CFTimeInterval) {
         dispatchEvent(Event(EventType.EnterFrame.rawValue, false))
     }
 }

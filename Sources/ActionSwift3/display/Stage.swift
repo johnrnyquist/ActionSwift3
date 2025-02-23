@@ -16,21 +16,22 @@ open class Stage: DisplayObjectContainer {
     fileprivate let skView:SKView
     static var size:CGSize = CGSize(width: 0, height: 0)
     
-    public init(_ skView:SKView) {
+    public init(_ skView:SKView, using scene: SKScene? = nil) {
         self.skView = skView
         Stage.size = CGSize(width: self.skView.bounds.width, height: self.skView.bounds.height)
-        
         super.init()
-
-        
-        let stageScene = StageScene(size: Stage.size)
-        stageScene.stageSceneDelegate = self
-        stageScene.scaleMode = SKSceneScaleMode.resizeFill
-        stageScene.backgroundColor = UIColor.white
-        
-        skView.presentScene(stageScene)
-        
-        stageScene.addChild(self.node)
+        if let scene {
+            scene.size = Stage.size
+            skView.presentScene(scene)
+            scene.addChild(self.node)
+        } else {
+            let stageScene = StageScene(size: Stage.size)
+            stageScene.stageSceneDelegate = self
+            stageScene.scaleMode = SKSceneScaleMode.resizeFill
+            stageScene.backgroundColor = UIColor.white
+            skView.presentScene(stageScene)
+            stageScene.addChild(self.node)
+        }
         self.stage = self
         
     }

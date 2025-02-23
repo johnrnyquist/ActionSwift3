@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-protocol StageSceneProtocol {
+public protocol StageSceneProtocol {
     func update(_ currentTime:CFTimeInterval)
 }
 open class StageScene: SKScene {

@@ -212,7 +212,7 @@ open class DisplayObjectContainer: InteractiveObject {
             }
         }
     }
-    override internal func update(_ currentTime:CFTimeInterval) {
+    override public func update(_ currentTime:CFTimeInterval) {
         super.update(currentTime)
         for child in children {
             child.update(currentTime)

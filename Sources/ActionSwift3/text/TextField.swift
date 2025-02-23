@@ -82,7 +82,7 @@ open class TextField: InteractiveObject {
             isDirty = true
         }
     }
-    override internal func update(_ currentTime:CFTimeInterval) {
+    override public func update(_ currentTime:CFTimeInterval) {
         super.update(currentTime)
         if (isDirty) {
             print("Updating textField \(width), \(height)")
