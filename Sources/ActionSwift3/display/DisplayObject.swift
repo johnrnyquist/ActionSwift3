@@ -20,6 +20,7 @@ open class DisplayObject: EventDispatcher, StageSceneProtocol {
     override public init() {
         super.init()
     }
+
     /**
      Indicates the visibility of the display object. Display objects with visible set to false are not rendered. 
      */
@@ -89,6 +90,7 @@ open class DisplayObject: EventDispatcher, StageSceneProtocol {
             node.position.y = newValue
         }
     }
+
     public func update(_ currentTime: CFTimeInterval) {
         dispatchEvent(Event(EventType.EnterFrame.rawValue, false))
     }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+
 /**
     Since funcs can not be tested for equality in Swift, this wrapper class is used with a function name
     to test for equality.
@@ -14,9 +15,10 @@ import UIKit
     https://devforums.apple.com/message/1035180#1035180
 */
 open class EventHandler: Object {
-    var function:(Event)->Void
-    var functionName:String
-    public init(_ function:@escaping (Event)->Void,_ functionName:String) {
+    var function: (Event) -> Void
+    var functionName: String
+
+    public init(_ function: @escaping (Event) -> Void, _ functionName: String) {
         self.function = function
         self.functionName = functionName
     }

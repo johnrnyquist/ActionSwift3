@@ -8,19 +8,23 @@
 
 import UIKit
 
-public func trace(_ parms:String ...) {
+public func trace(_ parms: String...) {
     print(parms)
 }
-public func trace(_ parms:Int) {
+
+public func trace(_ parms: Int) {
     print(parms)
 }
-public func trace(_ parms:CGFloat) {
+
+public func trace(_ parms: CGFloat) {
     print(parms)
 }
-public func trace(_ parms:UInt) {
+
+public func trace(_ parms: UInt) {
     print(parms)
 }
-public func trace(_ parms:Double) {
+
+public func trace(_ parms: Double) {
     print(parms)
 }
 

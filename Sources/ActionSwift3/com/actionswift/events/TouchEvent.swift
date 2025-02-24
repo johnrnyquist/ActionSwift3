@@ -11,17 +11,19 @@ import UIKit
 /**
 All interactive event types
 */
-public enum InteractiveEventType:String {
+public enum InteractiveEventType: String {
     case TouchBegin = "TouchBegin"
     case TouchEnd = "TouchEnd"
     case TouchMove = "TouchMove"
 }
+
 /**
 A custom Event class, with information about touches.
 */
 open class TouchEvent: Event {
-    open var touches:[Touch]
-    public init(_ type:InteractiveEventType,_ touches:[Touch],_ bubbles:Bool = true) {
+    open var touches: [Touch]
+
+    public init(_ type: InteractiveEventType, _ touches: [Touch], _ bubbles: Bool = true) {
         self.touches = touches
         super.init(type.rawValue, bubbles)
     }

@@ -17,7 +17,7 @@ extension Array {
      A non-negative integer specifying the number of elements in the array. This property is automatically updated when new elements are added to the array. When you assign a value to an array element (for example, my_array[index] = value), if index is a number, and index+1 is greater than the length property, the length property is updated to index+1.
      */
     var length:Int {
-        return self.count
+        self.count
     }
     func indexOf<T : Equatable>(_ x:T) -> Int {
         for i in 0..<self.length {
@@ -28,7 +28,7 @@ extension Array {
         return -1
     }
     func contains<T>(_ obj: T) -> Bool where T : Equatable {
-        return self.filter({$0 as? T == obj}).count > 0
+        filter({$0 as? T == obj}).count > 0
     }
     /**
      Checks if an index is safe
@@ -101,6 +101,6 @@ extension Array {
      - Returns: An array containing the elements that were removed from the original array.
      */
     @discardableResult mutating func splice(_ startIndex:UInt,deleteCount:UInt, values:Element)->Array {
-        return splice(startIndex, deleteCount: deleteCount, values: [values])
+        splice(startIndex, deleteCount: deleteCount, values: [values])
     }
 }

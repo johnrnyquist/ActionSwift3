@@ -12,14 +12,15 @@ open class InteractiveObject: DisplayObject {
     override public init() {
         super.init()
         self.mouseEnabled = true
-
     }
-    open var mouseEnabled:Bool {
-        get {return self.node.isUserInteractionEnabled}
+
+    open var mouseEnabled: Bool {
+        get { return self.node.isUserInteractionEnabled }
         set(newValue) {
             self.enableUserInteraction(newValue)
         }
     }
-    internal func enableUserInteraction(_ enabled:Bool) {
+
+    internal func enableUserInteraction(_ enabled: Bool) {
     }
 }

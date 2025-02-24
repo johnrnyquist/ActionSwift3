@@ -11,16 +11,15 @@ import UIKit
 /**
 The base class of *everything* in AS3...
 */
-open class Object:NSObject {
-    
+open class Object: NSObject {
     override public init() {
-        
     }
-    
-    open func toLocaleString()->String {
+
+    open func toLocaleString() -> String {
         return toString()
     }
-    open func toString()->String {
+
+    open func toString() -> String {
         return ""
     }
 }

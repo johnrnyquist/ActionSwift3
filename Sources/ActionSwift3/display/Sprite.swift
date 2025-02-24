@@ -13,10 +13,11 @@ Creates a Sprite. A sprite contains a graphics property that can be used to disp
 A sprite can also be dragged, via the `startDrag` method.
 */
 open class Sprite: DisplayObjectContainer {
-    open var graphics:Graphics!
+    open var graphics: Graphics!
     fileprivate var dragging = false
-    fileprivate var initialLoc:CGPoint = CGPoint(x: 0, y: 0)
-    fileprivate var initialTouch:CGPoint = CGPoint(x: 0, y: 0)
+    fileprivate var initialLoc: CGPoint = CGPoint(x: 0, y: 0)
+    fileprivate var initialTouch: CGPoint = CGPoint(x: 0, y: 0)
+
     override public init() {
         graphics = Graphics()
         super.init()
@@ -25,16 +26,19 @@ open class Sprite: DisplayObjectContainer {
         node.insertChild(graphics.node, at: 0)
         self.addEventListener(InteractiveEventType.TouchBegin.rawValue, EventHandler(touchEventHandler, "touchEventHandler"))
     }
-    override internal func enableUserInteraction(_ enabled:Bool) {
+
+    override internal func enableUserInteraction(_ enabled: Bool) {
         super.enableUserInteraction(enabled)
         self.graphics.userInteractionEnabled = enabled
     }
+
     ///Start dragging the sprite
     open func startDrag() {
         dragging = true
-        self.addEventListener(InteractiveEventType.TouchMove.rawValue, EventHandler(touchEventHandler, "touchEventHandler"))
+        addEventListener(InteractiveEventType.TouchMove.rawValue, EventHandler(touchEventHandler, "touchEventHandler"))
     }
-    func touchEventHandler(_ event:Event) -> Void {
+
+    func touchEventHandler(_ event: Event) -> Void {
         if let touchEvent = event as? TouchEvent {
             if touchEvent.type == InteractiveEventType.TouchBegin.rawValue {
                 if (!dragging) {
@@ -46,21 +50,22 @@ open class Sprite: DisplayObjectContainer {
             } else if touchEvent.type == InteractiveEventType.TouchMove.rawValue {
                 if let _ = touchEvent.currentTarget as? DisplayObject {
                     if let touch = touchEvent.touches.first {
-                        self.x = initialLoc.x + touch.stageX - initialTouch.x
-                        self.y = initialLoc.y + touch.stageY - initialTouch.y
+                        x = initialLoc.x + touch.stageX - initialTouch.x
+                        y = initialLoc.y + touch.stageY - initialTouch.y
                     }
                 }
             }
         }
-        
     }
+
     ///Stop dragging the sprite
     open func stopDrag() {
         dragging = false
-        self.removeEventListener(InteractiveEventType.TouchMove.rawValue, EventHandler(touchEventHandler, "touchEventHandler"))
+        removeEventListener(InteractiveEventType.TouchMove.rawValue, EventHandler(touchEventHandler, "touchEventHandler"))
         print("stop drag")
     }
-    override public func update(_ currentTime:CFTimeInterval) {
+
+    override public func update(_ currentTime: CFTimeInterval) {
         super.update(currentTime)
     }
 }

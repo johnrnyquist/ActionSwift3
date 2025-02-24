@@ -13,10 +13,10 @@ import UIKit
 Instantiate a Stage class passing in the skView.
 */
 open class Stage: DisplayObjectContainer {
-    fileprivate let skView:SKView
-    static var size:CGSize = CGSize(width: 0, height: 0)
-    
-    public init(_ skView:SKView, using scene: SKScene? = nil) {
+    fileprivate let skView: SKView
+    static var size: CGSize = CGSize(width: 0, height: 0)
+
+    public init(_ skView: SKView, using scene: SKScene? = nil) {
         self.skView = skView
         Stage.size = CGSize(width: self.skView.bounds.width, height: self.skView.bounds.height)
         super.init()
@@ -32,16 +32,17 @@ open class Stage: DisplayObjectContainer {
             skView.presentScene(stageScene)
             stageScene.addChild(self.node)
         }
-        self.stage = self
-        
+        stage = self
     }
-    class open func getSize()->CGSize {
-        return Stage.size
+
+    class open func getSize() -> CGSize {
+        Stage.size
     }
-    class open var stageWidth:CGFloat {
-        return self.getSize().width
+
+    class open var stageWidth: CGFloat {
+        getSize().width
     }
-    class open var stageHeight:CGFloat {
-        return self.getSize().height
+    class open var stageHeight: CGFloat {
+        getSize().height
     }
 }
